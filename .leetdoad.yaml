@@ -1,0 +1,2 @@
+languages: [go, java, cpp, python3]
+pattern: "leetcode/{{ .Language }}/{{ .QuestionNumber }}.{{ .QuestionName }}"
