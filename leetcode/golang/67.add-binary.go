@@ -1,3 +1,5 @@
+package main
+
 func addBinary(a string, b string) string {
 	res := ""
 	la := len(a) - 1

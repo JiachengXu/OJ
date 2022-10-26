@@ -1,3 +1,5 @@
+package main
+
 func rearrangeCharacters(s string, target string) int {
 	m := map[rune]int{}
 	for _, c := range s {

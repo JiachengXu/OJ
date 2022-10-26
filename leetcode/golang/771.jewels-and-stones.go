@@ -1,3 +1,5 @@
+package main
+
 func numJewelsInStones(J string, S string) int {
 	counter := 0
 	var low [26]int

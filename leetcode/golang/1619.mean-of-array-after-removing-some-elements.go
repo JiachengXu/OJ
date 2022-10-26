@@ -1,3 +1,5 @@
+package main
+
 import "sort"
 
 func trimMean(arr []int) float64 {

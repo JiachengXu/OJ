@@ -1,3 +1,5 @@
+package main
+
 func findLucky(arr []int) int {
 	m := map[int]int{}
 	for _, v := range arr {

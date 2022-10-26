@@ -1,3 +1,5 @@
+package main
+
 func findDiagonalOrder(mat [][]int) []int {
 	m := len(mat)
 	n := len(mat[0])

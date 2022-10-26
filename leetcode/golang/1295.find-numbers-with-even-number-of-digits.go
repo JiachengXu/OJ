@@ -1,3 +1,5 @@
+package main
+
 func findNumbers(nums []int) int {
 	res := 0
 	for _, num := range nums {

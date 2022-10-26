@@ -1,3 +1,5 @@
+package main
+
 func findMaxConsecutiveOnes(nums []int) int {
 	res := 0
 	length := 0

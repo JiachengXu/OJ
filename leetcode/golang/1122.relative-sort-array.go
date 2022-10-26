@@ -1,3 +1,5 @@
+package main
+
 import "sort"
 
 func relativeSortArray(arr1 []int, arr2 []int) []int {

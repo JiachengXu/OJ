@@ -1,3 +1,5 @@
+package main
+
 func sortedSquares(nums []int) []int {
 	index := len(nums) - 1
 	for i := 0; i <= len(nums)-1; i++ {
@@ -32,4 +34,3 @@ func sortedSquares(nums []int) []int {
 	}
 	return res
 }
-

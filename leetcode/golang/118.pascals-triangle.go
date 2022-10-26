@@ -1,3 +1,5 @@
+package main
+
 func generate(num int) [][]int {
 	numRows := make([][]int, num)
 	for i := 0; i < num; i++ {

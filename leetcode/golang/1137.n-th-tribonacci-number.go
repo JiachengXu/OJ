@@ -1,3 +1,5 @@
+package main
+
 func tribonacci(n int) int {
 	if n < 2 {
 		return n

@@ -1,3 +1,5 @@
+package main
+
 func subtractProductAndSum(n int) int {
 	digits := []int{}
 	m := n

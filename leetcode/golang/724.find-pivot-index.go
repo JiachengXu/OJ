@@ -1,3 +1,5 @@
+package main
+
 func pivotIndex(nums []int) int {
 	sum := 0
 	for _, v := range nums {

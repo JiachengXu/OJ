@@ -1,3 +1,5 @@
+package main
+
 func dominantIndex(nums []int) int {
 	// Find the largest one
 	largest := 0

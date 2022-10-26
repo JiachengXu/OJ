@@ -1,3 +1,5 @@
+package main
+
 func numEquivDominoPairs(dominoes [][]int) int {
 	m := map[[2]int]int{}
 	for _, v := range dominoes {

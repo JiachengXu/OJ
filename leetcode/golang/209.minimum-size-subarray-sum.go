@@ -1,3 +1,5 @@
+package main
+
 func minSubArrayLen(target int, nums []int) int {
 	res := len(nums) + 1
 	sum := 0

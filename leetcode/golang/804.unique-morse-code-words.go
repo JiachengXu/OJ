@@ -1,3 +1,5 @@
+package main
+
 func uniqueMorseRepresentations(words []string) int {
 	if words == nil || len(words) == 0 {
 		return 0
