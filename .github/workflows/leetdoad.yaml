@@ -20,6 +20,8 @@ jobs:
       # Install the latest version of leetdoad.
       - name: install leetdoad
         run: go install github.com/jiachengxu/leetdoad@latest
+      - name: install goimports
+        run: go install golang.org/x/tools/cmd/goimports@latest
       # Checkout to the current project root.
       - name: checkout repo
         uses: actions/checkout@v2
@@ -29,6 +31,8 @@ jobs:
         working-directory: ./leetcode
         env: 
           LEETCODE_COOKIE: ${{ secrets.LEETCODE_COOKIE }}
+      - name: format and add imports for go solutions
+        run: goimports -w .
       # Commit the change.
       - name: commit change
         uses: stefanzweifel/git-auto-commit-action@v4
