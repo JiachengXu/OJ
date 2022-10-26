@@ -13,19 +13,20 @@ class Node {
 };
 */
 class Solution {
-    public List<Integer> preorder(Node root) {
-        List<Integer> res = new ArrayList<>();
-        if(root == null) return res;
-        Stack<Node> stack = new Stack<>();
-        Node p = root;
-        stack.push(p);
-        while(!stack.isEmpty()){
-            Node cur = stack.pop();
-            res.add(cur.val);
-            for(int i = cur.children.size() - 1; i >= 0; i--){
-                stack.add(cur.children.get(i));
-            }
-        }
-        return res;
+  public List<Integer> preorder(Node root) {
+    List<Integer> res = new ArrayList<>();
+    if (root == null)
+      return res;
+    Stack<Node> stack = new Stack<>();
+    Node p = root;
+    stack.push(p);
+    while (!stack.isEmpty()) {
+      Node cur = stack.pop();
+      res.add(cur.val);
+      for (int i = cur.children.size() - 1; i >= 0; i--) {
+        stack.add(cur.children.get(i));
+      }
     }
+    return res;
+  }
 }

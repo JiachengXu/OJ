@@ -11,21 +11,22 @@ class Employee {
 };
 */
 class Solution {
-    public int getImportance(List<Employee> employees, int id) {
-        return rec(employees,id);
-    }
-    public int rec(List<Employee> employees, int id){
-        if(employees.size()==0) return 0;
-        int value = 0;
-        for(Employee employee: employees){
-            if(employee.id == id){
-                value += employee.importance;
-                for(Integer e:employee.subordinates){
-                    value += rec(employees, e);
-                }
-                return value; 
-            }
+  public int getImportance(List<Employee> employees, int id) {
+    return rec(employees, id);
+  }
+  public int rec(List<Employee> employees, int id) {
+    if (employees.size() == 0)
+      return 0;
+    int value = 0;
+    for (Employee employee : employees) {
+      if (employee.id == id) {
+        value += employee.importance;
+        for (Integer e : employee.subordinates) {
+          value += rec(employees, e);
         }
-        return 0;
+        return value;
+      }
     }
+    return 0;
+  }
 }

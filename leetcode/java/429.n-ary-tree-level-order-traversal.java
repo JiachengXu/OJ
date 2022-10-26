@@ -13,23 +13,24 @@ class Node {
 };
 */
 class Solution {
-    public List<List<Integer>> levelOrder(Node root) {
-        List<List<Integer>> res = new ArrayList<>();
-        if(root == null) return res;
-        Queue<Node> q = new LinkedList<>();
-        q.offer(root);
-        while(!q.isEmpty()){
-            List<Integer> temp = new ArrayList<>();
-            int len = q.size();
-            for(int i = 0; i < len; i++){
-                Node cur = q.poll();
-                temp.add(cur.val);
-                for(Node child : cur.children){
-                    q.offer(child);
-                }
-            }
-            res.add(temp);
+  public List<List<Integer>> levelOrder(Node root) {
+    List<List<Integer>> res = new ArrayList<>();
+    if (root == null)
+      return res;
+    Queue<Node> q = new LinkedList<>();
+    q.offer(root);
+    while (!q.isEmpty()) {
+      List<Integer> temp = new ArrayList<>();
+      int len = q.size();
+      for (int i = 0; i < len; i++) {
+        Node cur = q.poll();
+        temp.add(cur.val);
+        for (Node child : cur.children) {
+          q.offer(child);
         }
-        return res;
+      }
+      res.add(temp);
     }
+    return res;
+  }
 }

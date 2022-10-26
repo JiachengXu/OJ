@@ -1,24 +1,24 @@
 class MyCalendar {
-    private List<int[]> events;
-    public MyCalendar() {
-        events = new ArrayList<>();
+  private List<int[]> events;
+  public MyCalendar() {
+    events = new ArrayList<>();
+  }
+
+  public boolean book(int start, int end) {
+    for (int[] event : events) {
+      if (event[0] <= start && start < event[1]) {
+        return false;
+      }
+      if (event[0] >= start && end > event[0]) {
+        return false;
+      }
     }
-    
-    public boolean book(int start, int end) {
-        for(int[] event:events){
-            if(event[0]<=start&&start<event[1]){
-                return false;
-            }
-            if(event[0]>=start&&end>event[0]){
-                return false;
-            }
-        }
-        int[] temp = new int[2];
-        temp[0] = start;
-        temp[1] = end;
-        events.add(temp);
-        return true;
-    }
+    int[] temp = new int[2];
+    temp[0] = start;
+    temp[1] = end;
+    events.add(temp);
+    return true;
+  }
 }
 
 /**

@@ -9,12 +9,10 @@ class Solution:
         for i, c in enumerate(S):
             if c == C:
                 positions.append(i)
-        res = []        
-        for i, c in enumerate(S):        
+        res = []
+        for i, c in enumerate(S):
             mindist = len(S)
             for pos in positions:
-                mindist = min(mindist, abs(pos-i))
-            res.append(mindist)    
-        return res    
-            
-                
+                mindist = min(mindist, abs(pos - i))
+            res.append(mindist)
+        return res
