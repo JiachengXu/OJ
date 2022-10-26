@@ -22,18 +22,22 @@ jobs:
         run: go install github.com/jiachengxu/leetdoad@latest
       - name: install goimports
         run: go install golang.org/x/tools/cmd/goimports@latest
+      - name: install clang-format
+        run: sudo apt install clang-format
       # Checkout to the current project root.
-      - name: checkout repo
-        uses: actions/checkout@v2
-      # Run leetdoad command in leetcode folder.
-      - name: leetdoad scraping
-        run: leetdoad
-        working-directory: ./leetcode
-        env: 
-          LEETCODE_COOKIE: ${{ secrets.LEETCODE_COOKIE }}
+#      - name: checkout repo
+#        uses: actions/checkout@v2
+#      # Run leetdoad command in leetcode folder.
+#      - name: leetdoad scraping
+#        run: leetdoad
+#        working-directory: ./leetcode
+#        env:
+#          LEETCODE_COOKIE: ${{ secrets.LEETCODE_COOKIE }}
       - name: format and add imports for go solutions
         run: goimports -w .
       # Commit the change.
+      - name: format cpp and java solutions
+        run: find .  -name '*.java' -o -name '*.cpp' | xargs clang-format -i --style=Google
       - name: commit change
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
