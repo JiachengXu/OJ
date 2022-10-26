@@ -30,6 +30,7 @@ jobs:
       # Run leetdoad command in leetcode folder.
       - name: leetdoad scraping
         run: leetdoad
+        if: github.event_name != 'push'
         working-directory: ./leetcode
         env:
           LEETCODE_COOKIE: ${{ secrets.LEETCODE_COOKIE }}
