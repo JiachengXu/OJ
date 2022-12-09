@@ -4,3 +4,7 @@ in
 out
 *.pdf
 .idea/
+main
+input
+small
+.DS_Store
