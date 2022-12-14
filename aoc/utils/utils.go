@@ -91,3 +91,36 @@ func Abs(a int) int {
 	}
 	return -a
 }
+
+func Max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+func Min(a, b int) int {
+	if a > b {
+		return b
+	}
+	return a
+}
+
+func Intersection[T comparable](a, b []T) []T {
+	m := map[T]struct{}{}
+	for _, v := range a {
+		m[v] = struct{}{}
+	}
+
+	res := []T{}
+	for _, v := range b {
+		if _, ok := m[v]; ok {
+			res = append(res, v)
+		}
+	}
+	return res
+}
+
+func IntersectionStr(a, b, sep string) string {
+	return strings.Join(Intersection(strings.Split(a, sep), strings.Split(b, sep)), sep)
+}
