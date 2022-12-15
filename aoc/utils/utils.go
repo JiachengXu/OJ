@@ -124,3 +124,18 @@ func Intersection[T comparable](a, b []T) []T {
 func IntersectionStr(a, b, sep string) string {
 	return strings.Join(Intersection(strings.Split(a, sep), strings.Split(b, sep)), sep)
 }
+
+type Point struct {
+	X, Y int
+}
+
+func NewPoint(x, y int) Point {
+	return Point{
+		X: x,
+		Y: y,
+	}
+}
+
+func ManhattanDistance(p1, p2 Point) int {
+	return Abs(p1.X-p2.X) + Abs(p1.Y-p2.Y)
+}
