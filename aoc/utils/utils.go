@@ -3,9 +3,72 @@ package utils
 import (
 	"io/ioutil"
 	"log"
+	"math"
 	"strconv"
 	"strings"
 )
+
+var (
+	Dirs = [][]int{
+		{0, 1},
+		{0, -1},
+		{1, 0},
+		{-1, 0},
+	}
+	Dirs3D = [][]int{
+		{0, 1, 0},
+		{0, -1, 0},
+		{1, 0, 0},
+		{-1, 0, 0},
+		{0, 0, 1},
+		{0, 0, -1},
+	}
+	Dias = [][]int{
+		{0, 1},
+		{0, -1},
+		{1, 0},
+		{-1, 0},
+		{1, -1},
+		{-1, -1},
+		{1, 1},
+		{-1, 1},
+	}
+)
+
+func Transversal[T any](x, y int, m [][]T, dirs [][]int, f func(newX, newY int)) {
+	if dirs == nil {
+		dirs = Dirs
+	}
+	for _, d := range dirs {
+		newX := x + d[0]
+		newY := y + d[1]
+		if In(newX, newY, m) {
+			f(newX, newY)
+		}
+	}
+}
+
+func In[T any](x, y int, m [][]T) bool {
+	return x >= 0 && x < len(m) && y >= 0 && y < len(m[x])
+}
+
+func Transversal3D[T any](x, y, z int, m [][][]T, dirs [][]int, f func(newX, newY, newZ int)) {
+	if dirs == nil {
+		dirs = Dirs3D
+	}
+	for _, d := range dirs {
+		newX := x + d[0]
+		newY := y + d[1]
+		newZ := z + d[2]
+		if In3D(newX, newY, newZ, m) {
+			f(newX, newY, newZ)
+		}
+	}
+}
+
+func In3D[T any](x, y, z int, m [][][]T) bool {
+	return x >= 0 && x < len(m) && y >= 0 && y < len(m[x]) && z >= 0 && z < len(m[x][y])
+}
 
 func Reverse(s string) string {
 	rns := []rune(s)
@@ -104,6 +167,16 @@ func Min(a, b int) int {
 		return b
 	}
 	return a
+}
+
+func SliceMax(a []int) int {
+	max := math.MinInt
+	for _, k := range a {
+		if k > max {
+			max = k
+		}
+	}
+	return max
 }
 
 func Intersection[T comparable](a, b []T) []T {
