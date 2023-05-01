@@ -3,42 +3,35 @@ class Solution {
     if (nums1.length > nums2.length) {
       return findMedianSortedArrays(nums2, nums1);
     }
+
     int m = nums1.length;
     int n = nums2.length;
-    int i = 0;
-    int j = 0;
+    int i, j, maxLeft, minRight;
     int mmin = 0;
     int mmax = m;
-    int max_left = 0;
-    int min_right = 0;
+
     while (mmin <= mmax) {
       i = (mmin + mmax) / 2;
       j = (m + n + 1) / 2 - i;
-      if (i < m && nums2[j - 1] > nums1[i]) {
-        mmin = i + 1;
-      } else if (i > 0 && nums1[i - 1] > nums2[j]) {
+
+      int nums1LeftMax = (i == 0) ? Integer.MIN_VALUE : nums1[i - 1];
+      int nums1RightMin = (i == m) ? Integer.MAX_VALUE : nums1[i];
+      int nums2LeftMax = (j == 0) ? Integer.MIN_VALUE : nums2[j - 1];
+      int nums2RightMin = (j == n) ? Integer.MAX_VALUE : nums2[j];
+
+      if (nums1LeftMax <= nums2RightMin && nums2LeftMax <= nums1RightMin) {
+        maxLeft = Math.max(nums1LeftMax, nums2LeftMax);
+        if ((m + n) % 2 == 1) {
+          return (double) maxLeft;
+        }
+        minRight = Math.min(nums1RightMin, nums2RightMin);
+        return (maxLeft + minRight) / 2.0;
+      } else if (nums1LeftMax > nums2RightMin) {
         mmax = i - 1;
       } else {
-        if (i == 0) {
-          max_left = nums2[j - 1];
-        } else if (j == 0) {
-          max_left = nums1[i - 1];
-        } else {
-          max_left = Math.max(nums1[i - 1], nums2[j - 1]);
-        }
-        if ((m + n) % 2 == 1) {
-          return max_left;
-        }
-        if (i == m) {
-          min_right = nums2[j];
-        } else if (j == n) {
-          min_right = nums1[i];
-        } else {
-          min_right = Math.min(nums1[i], nums2[j]);
-        }
-        return (min_right + max_left) / 2.;
+        mmin = i + 1;
       }
     }
-    return (min_right + max_left) / 2.;
+    throw new IllegalArgumentException("Input arrays are not sorted.");
   }
 }
